@@ -378,18 +378,18 @@ int main()
         PopMatrix(model);
 
         // CABECA
-
         PushMatrix(model);
              model = model // Atualizamos matriz model (multiplicação à direita) com a rotação do braço direito
                       * Matrix_Rotate_Z(g_AngleZ)  // TERCEIRO rotação Z de Euler
                       * Matrix_Rotate_Y(-g_AngleY)  // SEGUNDO rotação Y de Euler
                       * Matrix_Rotate_X(-g_AngleX); // PRIMEIRO rotação X de Euler
-            model = model * Matrix_Scale(0.3f, 0.3f, 0.3f);
-            model = model * Matrix_Translate(0.0f, 1.15f, 0.0f);
+            model = model * Matrix_Scale(-0.3f, -0.3f, 0.3f);
+            model = model * Matrix_Translate(0.0f, -0.15f, 0.0f);
             glUniformMatrix4fv(model_uniform, 1, GL_FALSE, glm::value_ptr(model));
             DrawCube(render_as_black_uniform); // #### CABECA
         PopMatrix(model);
         // FIM CABECA
+
         PushMatrix(model); // Guardamos matriz model atual na pilha
             model = model * Matrix_Translate(-0.55f, 0.0f, 0.0f); // Atualizamos matriz model (multiplicação à direita) com uma translação para o braço direito
             PushMatrix(model); // Guardamos matriz model atual na pilha
